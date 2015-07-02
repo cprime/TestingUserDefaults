@@ -55,6 +55,14 @@
     [data removeObjectForKey:defaultName];
 }
 
+- (void)registerDefaults:(NSDictionary *)registrationDictionary {
+    for (NSString *key in registrationDictionary) {
+        if (!data[key]) {
+            data[key] = registrationDictionary[key];
+        }
+    }
+}
+
 - (void)synchronize
 {
     // no-op

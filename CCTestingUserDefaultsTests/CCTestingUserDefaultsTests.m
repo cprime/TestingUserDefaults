@@ -99,4 +99,25 @@
     XCTAssertNil([self.defaults objectForKey:@"test"]);
 }
 
+- (void)testRegister
+{
+    NSString *testKey1 = @"testKey1";
+    NSString *testKey2 = @"testKey2";
+    NSString *testString1 = @"testString1";
+    NSString *testString2a = @"testString2a";
+    NSString *testString2b = @"testString2b";
+    [self.defaults setObject:testString2a forKey:testKey2];
+
+    XCTAssertNil([self.defaults objectForKey:testKey1]);
+    XCTAssertEqualObjects([self.defaults objectForKey:testKey2], testString2a);
+
+    [self.defaults registerDefaults:@{
+                                      testKey1  : testString1,
+                                      testKey2  : testString2b,
+                                      }];
+
+    XCTAssertEqualObjects([self.defaults objectForKey:testKey1], testString1);
+    XCTAssertEqualObjects([self.defaults objectForKey:testKey2], testString2a);
+}
+
 @end

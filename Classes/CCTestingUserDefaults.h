@@ -22,6 +22,8 @@
 
 - (void)removeObjectForKey:(NSString*)defaultName;
 
+- (void)registerDefaults:(NSDictionary *)registrationDictionary;
+
 - (void)synchronize;
 
 @end
